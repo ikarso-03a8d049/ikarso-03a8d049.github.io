@@ -1,0 +1,1070 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>嘀哩嘀哩-动漫番剧_追番社区_弹幕互动与二次元内容平台</title>
+    <meta name="description" content="嘀哩嘀哩是专注动漫番剧与二次元文化的追番社区，提供新番速递、经典回顾、弹幕互动、声优资讯与深度解析。无论你是追更党还是补番爱好者，都能在这里找到同好与归属感。">
+    <meta name="keywords" content="嘀哩嘀哩,动漫番剧,追番社区,弹幕互动,二次元内容">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23a855f7'/%3E%3Ctext x='50' y='68' font-size='60' text-anchor='middle' fill='white' font-family='Arial'%3E嘀%3C/text%3E%3C/svg%3E">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand-primary: #a855f7;
+            --brand-secondary: #ec4899;
+            --brand-bg: #fdf4ff;
+            --card-bg: #ffffff;
+            --text-main: #1e1b2e;
+            --text-soft: #4c4062;
+            --text-muted: #7e6b8f;
+            --border-light: #f0e6f5;
+            --shadow-sm: 0 4px 12px rgba(168, 85, 247, 0.08);
+            --shadow-md: 0 12px 28px rgba(168, 85, 247, 0.12);
+            --radius-card: 20px;
+            --radius-sm: 12px;
+            --max-width: 1200px;
+            --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--brand-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航 */
+        .nav-bar {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-badge {
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+            color: white;
+            font-weight: 800;
+            font-size: 1.3rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 14px rgba(168, 85, 247, 0.35);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #6b21a5, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 26px;
+            flex-wrap: wrap;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-soft);
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-primary);
+            border-bottom-color: var(--brand-primary);
+        }
+
+        .nav-search {
+            background: white;
+            border-radius: 40px;
+            padding: 6px 6px 6px 18px;
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        .nav-search input {
+            border: none;
+            outline: none;
+            font-size: 0.9rem;
+            width: 150px;
+            background: transparent;
+            color: var(--text-main);
+        }
+
+        .nav-search button {
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+            color: white;
+            border: none;
+            border-radius: 40px;
+            padding: 8px 18px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: default;
+        }
+
+        /* banner */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 48px 0 36px;
+            flex-wrap: wrap;
+        }
+
+        .hero-left {
+            flex: 1 1 380px;
+        }
+
+        .hero-left h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            background: linear-gradient(135deg, #4c1d95, #db2777);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            margin-bottom: 22px;
+            max-width: 500px;
+        }
+
+        .hero-search {
+            display: flex;
+            background: white;
+            border-radius: 60px;
+            padding: 6px;
+            box-shadow: var(--shadow-md);
+            max-width: 480px;
+            border: 1px solid var(--border-light);
+        }
+
+        .hero-search input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 14px 22px;
+            font-size: 1rem;
+            border-radius: 60px;
+            background: transparent;
+            color: var(--text-main);
+        }
+
+        .hero-search button {
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+            border: none;
+            color: white;
+            border-radius: 60px;
+            padding: 0 34px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: default;
+            white-space: nowrap;
+            box-shadow: 0 6px 16px rgba(168, 85, 247, 0.3);
+        }
+
+        .hero-tags {
+            margin-top: 22px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hero-tags span {
+            background: white;
+            border: 1px solid var(--border-light);
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: var(--text-soft);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s;
+        }
+
+        .hero-tags span:hover {
+            border-color: var(--brand-primary);
+            color: var(--brand-primary);
+        }
+
+        .hero-right {
+            flex: 1 1 300px;
+            background: linear-gradient(145deg, #faf0ff, #fce7f3);
+            border-radius: 48px;
+            padding: 30px 26px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-right h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #6b21a5;
+            margin-bottom: 12px;
+        }
+
+        .hero-right p {
+            color: var(--text-soft);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .hero-right .update-badge {
+            background: white;
+            border-radius: 40px;
+            padding: 10px 18px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--brand-secondary);
+            display: inline-block;
+            width: fit-content;
+            margin-top: 8px;
+            box-shadow: 0 4px 10px rgba(236, 72, 153, 0.1);
+        }
+
+        /* 通用 section */
+        .section {
+            margin: 56px 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 26px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .section-header h2 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+            border-left: 6px solid var(--brand-primary);
+            padding-left: 18px;
+        }
+
+        .section-header .more-link {
+            color: var(--brand-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+
+        /* 内容简介 */
+        .intro-box {
+            background: white;
+            border-radius: var(--radius-card);
+            padding: 32px 36px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            font-size: 1.02rem;
+            color: var(--text-soft);
+        }
+
+        .intro-box p {
+            margin-bottom: 16px;
+        }
+
+        .intro-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .anime-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-card);
+            padding: 22px 20px 18px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .anime-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-cover {
+            height: 120px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #e9d5ff, #fbcfe8);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b21a5;
+            font-weight: 700;
+            font-size: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .anime-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .card-tags span {
+            background: #f5edff;
+            color: var(--brand-primary);
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 40px;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+
+        .card-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            flex: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            color: #9f8eb0;
+            border-top: 1px dashed var(--border-light);
+            padding-top: 12px;
+        }
+
+        /* 最新更新列表 */
+        .update-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .update-item {
+            background: white;
+            border-radius: 18px;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            transition: all 0.2s;
+        }
+
+        .update-item:hover {
+            border-color: var(--brand-primary);
+        }
+
+        .update-time {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--brand-secondary);
+            background: #fdf2f8;
+            padding: 4px 12px;
+            border-radius: 40px;
+            white-space: nowrap;
+        }
+
+        .update-title {
+            font-weight: 700;
+            font-size: 1rem;
+            min-width: 150px;
+        }
+
+        .update-summary {
+            flex: 1;
+            color: var(--text-soft);
+            font-size: 0.9rem;
+        }
+
+        /* 分类入口 */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .category-item {
+            background: white;
+            border-radius: 18px;
+            padding: 18px 12px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-soft);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            transition: all 0.2s;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .category-item:hover {
+            background: linear-gradient(135deg, #faf0ff, #fce7f3);
+            border-color: var(--brand-primary);
+            color: var(--brand-primary);
+            transform: translateY(-3px);
+        }
+
+        /* 深度解析 */
+        .deep-analysis {
+            background: white;
+            border-radius: var(--radius-card);
+            padding: 36px 40px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            color: var(--text-soft);
+            font-size: 1.02rem;
+        }
+
+        .deep-analysis h3 {
+            color: var(--text-main);
+            margin: 24px 0 12px;
+            font-size: 1.3rem;
+        }
+
+        .deep-analysis h3:first-of-type {
+            margin-top: 0;
+        }
+
+        .deep-analysis p {
+            margin-bottom: 16px;
+        }
+
+        /* FAQ 手风琴 */
+        .faq-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 18px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 18px 24px;
+            font-weight: 700;
+            color: var(--text-main);
+            background: #fcf9fe;
+            cursor: default;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1rem;
+        }
+
+        .faq-question span {
+            color: var(--brand-primary);
+            font-weight: 700;
+        }
+
+        .faq-answer {
+            padding: 16px 24px 20px;
+            color: var(--text-soft);
+            font-size: 0.95rem;
+            border-top: 1px solid var(--border-light);
+            background: white;
+        }
+
+        /* 评论 */
+        .comment-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
+        }
+
+        .comment-item {
+            background: white;
+            border-radius: 18px;
+            padding: 18px 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+
+        .comment-name {
+            font-weight: 700;
+            color: var(--brand-primary);
+        }
+
+        .comment-date {
+            color: #b8a6c9;
+        }
+
+        .comment-text {
+            color: var(--text-soft);
+            font-size: 0.9rem;
+        }
+
+        /* 资讯 */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 20px;
+            padding: 22px 26px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+        }
+
+        .news-card:hover {
+            border-color: var(--brand-primary);
+        }
+
+        .news-date {
+            font-size: 0.78rem;
+            color: var(--brand-secondary);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .news-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .news-summary {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* 页脚 */
+        .footer {
+            background: #1e1b2e;
+            color: #cbb9db;
+            margin-top: 70px;
+            padding: 48px 0 32px;
+            border-radius: 48px 48px 0 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 32px;
+        }
+
+        .footer-brand {
+            max-width: 280px;
+        }
+
+        .footer-brand .logo-text {
+            -webkit-text-fill-color: #e5d5f5;
+            background: none;
+            font-size: 1.6rem;
+        }
+
+        .footer-brand p {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: #a38bb8;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links h4 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 14px;
+            font-size: 1rem;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #b8a0ce;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #f0b0e0;
+        }
+
+        .footer-bottom {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.78rem;
+            color: #86739b;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero-left h1 {
+                font-size: 2rem;
+            }
+            .hero-section {
+                padding: 28px 0;
+                gap: 24px;
+            }
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+            .deep-analysis {
+                padding: 24px 20px;
+            }
+            .intro-box {
+                padding: 24px 20px;
+            }
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+            .footer {
+                border-radius: 32px 32px 0 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-search {
+                flex-direction: column;
+                background: transparent;
+                box-shadow: none;
+                padding: 0;
+                gap: 10px;
+            }
+            .hero-search input {
+                background: white;
+                box-shadow: var(--shadow-sm);
+                border: 1px solid var(--border-light);
+            }
+            .hero-search button {
+                padding: 12px;
+                width: 100%;
+            }
+            .update-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .comment-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+    <!-- 导航 -->
+    <header class="nav-bar">
+        <div class="container nav-inner">
+            <div class="logo-area">
+                <div class="logo-badge">嘀</div>
+                <span class="logo-text">嘀哩嘀哩</span>
+            </div>
+            <nav class="nav-links">
+                <a href="/#hot-anime">番剧推荐</a>
+                <a href="/#latest-update">新番速递</a>
+                <a href="/#deep-analysis">深度解析</a>
+                <a href="/#category">分类索引</a>
+                <a href="/#faq">常见问题</a>
+                <a href="/#news">二次元资讯</a>
+            </nav>
+            <div class="nav-search">
+                <input type="text" placeholder="搜索番剧 / 声优 / 标签…" value="嘀哩嘀哩">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 首屏 Banner -->
+    <div class="container">
+        <section class="hero-section">
+            <div class="hero-left">
+                <h1>嘀哩嘀哩 · 动漫番剧追更社区</h1>
+                <p class="hero-desc">
+                    从本季新番到经典神作，嘀哩嘀哩为你聚合番剧资讯、弹幕互动与深度解析。<br>
+                    无论你是硬核考据党还是轻松追更党，这里都有属于你的二次元角落。
+                </p>
+                <div class="hero-search">
+                    <input type="text" placeholder="输入番剧名、声优或关键词…" value="嘀哩嘀哩">
+                    <button>发现内容</button>
+                </div>
+                <div class="hero-tags">
+                    <span>新番速递</span>
+                    <span>声优情报</span>
+                    <span>弹幕精选</span>
+                    <span>经典补番</span>
+                    <span>剧场版</span>
+                    <span>国创动画</span>
+                    <span>轻小说改</span>
+                </div>
+            </div>
+            <div class="hero-right">
+                <h3>🔥 今日追番热度</h3>
+                <p>《葬送的芙莉莲》第二季 · 第8话 已更新</p>
+                <p>《怪兽8号》新PV解禁 · 讨论量 +215%</p>
+                <p>《时光代理人》剧场版 · 确认引进</p>
+                <span class="update-badge">📺 嘀哩嘀哩 · 追番不迷路</span>
+            </div>
+        </section>
+    </div>
+
+    <!-- 内容简介 -->
+    <div class="container">
+        <section class="section" id="intro">
+            <div class="section-header">
+                <h2>嘀哩嘀哩：你的二次元内容导航站</h2>
+                <span class="more-link">专注动漫番剧</span>
+            </div>
+            <div class="intro-box">
+                <p>嘀哩嘀哩是一个围绕动漫番剧与二次元文化的内容聚合社区。这里不只是一份番剧列表，更是一套完整的追番体验：从新番定档、声优公布、制作阵容，到开播后的弹幕讨论、剧情考据、同人创作，嘀哩嘀哩试图把分散在互联网各处的二次元信息整理成清晰、可读、可收藏的内容流。</p>
+                <p>如果你习惯在每个季度初查看新番表、在播出后第一时间参与弹幕互动、在完结后翻看深度解析，那么嘀哩嘀哩的内容结构就是为你准备的。我们关注的不只是“看了什么”，更在意“和谁一起看”“看完聊什么”。从热血少年漫改到治愈系原创，从剧场版大作到泡面番，嘀哩嘀哩用分类标签、编辑推荐和用户评分帮你快速锁定想看的作品。</p>
+                <p>页面内整合了热门推荐、最新更新、深度解析长文、FAQ 和用户评论区，无论是刚入坑的新人还是追番十年的老宅，都能在嘀哩嘀哩找到属于自己的浏览路径。收藏这个页面，下一部想看的番或许就在这里。</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- 热门推荐 -->
+    <div class="container">
+        <section class="section" id="hot-anime">
+            <div class="section-header">
+                <h2>嘀哩嘀哩 · 热门番剧推荐</h2>
+                <a href="/#hot-anime" class="more-link">查看全部 →</a>
+            </div>
+            <div class="card-grid">
+                <div class="anime-card">
+                    <div class="card-cover">芙莉莲</div>
+                    <h3>葬送的芙莉莲 第二季</h3>
+                    <div class="card-tags"><span>奇幻</span><span>治愈</span><span>冒险</span></div>
+                    <p class="card-desc">精灵魔法使的旅途仍在继续，本季聚焦“记忆与告别”的细腻叙事，作画与配乐保持高水准。</p>
+                    <div class="card-meta"><span>⭐ 9.4</span><span>更新至 第8话</span></div>
+                </div>
+                <div class="anime-card">
+                    <div class="card-cover">怪兽8号</div>
+                    <h3>怪兽8号</h3>
+                    <div class="card-tags"><span>热血</span><span>战斗</span><span>漫改</span></div>
+                    <p class="card-desc">防卫队新人卡夫卡体内藏有怪兽之力，Production I.G 的战斗分镜张力十足。</p>
+                    <div class="card-meta"><span>⭐ 8.7</span><span>更新至 第10话</span></div>
+                </div>
+                <div class="anime-card">
+                    <div class="card-cover">药屋少女</div>
+                    <h3>药屋少女的呢喃</h3>
+                    <div class="card-tags"><span>推理</span><span>古风</span><span>后宫</span></div>
+                    <p class="card-desc">猫猫的宫中探案日常，药理解谜与人物关系双线推进，节奏舒适适合下饭。</p>
+                    <div class="card-meta"><span>⭐ 9.1</span><span>全24话 完结</span></div>
+                </div>
+                <div class="anime-card">
+                    <div class="card-cover">迷宫饭</div>
+                    <h3>迷宫饭</h3>
+                    <div class="card-tags"><span>美食</span><span>奇幻</span><span>冒险</span></div>
+                    <p class="card-desc">地下城美食求生记，Trigger 的作画把魔物料理做得让人食指大动，笑点与设定齐飞。</p>
+                    <div class="card-meta"><span>⭐ 9.0</span><span>更新至 第18话</span></div>
+                </div>
+                <div class="anime-card">
+                    <div class="card-cover">时光代理人</div>
+                    <h3>时光代理人 第二季</h3>
+                    <div class="card-tags"><span>国创</span><span>悬疑</span><span>时空</span></div>
+                    <p class="card-desc">程小时与陆光再度联手，剧情反转密度高，OP/ED 依旧是视觉与听觉的双重享受。</p>
+                    <div class="card-meta"><span>⭐ 8.9</span><span>全12话 完结</span></div>
+                </div>
+                <div class="anime-card">
+                    <div class="card-cover">我推的孩子</div>
+                    <h3>【我推的孩子】第二季</h3>
+                    <div class="card-tags"><span>偶像</span><span>悬疑</span><span>演艺圈</span></div>
+                    <p class="card-desc">舞台剧篇高潮迭起，对演艺圈生态的刻画锐利，阿库亚的复仇线持续牵动观众。</p>
+                    <div class="card-meta"><span>⭐ 8.8</span><span>更新至 第9话</span></div>
+                </div>
+                <div class="anime-card">
+                    <div class="card-cover">败犬女主</div>
+                    <h3>败犬女主太多了！</h3>
+                    <div class="card-tags"><span>校园</span><span>喜剧</span><span>恋爱</span></div>
+                    <p class="card-desc">A-1 Pictures 把“败犬”们的可爱与不甘拍得鲜活，男主吐槽恰到好处。</p>
+                    <div class="card-meta"><span>⭐ 8.5</span><span>更新至 第7话</span></div>
+                </div>
+                <div class="anime-card">
+                    <div class="card-cover">胆大党</div>
+                    <h3>胆大党</h3>
+                    <div class="card-tags"><span>超自然</span><span>战斗</span><span>怪诞</span></div>
+                    <p class="card-desc">Science SARU 的作画自由度极高，灵异与青春战斗结合，爽感与风格化兼备。</p>
+                    <div class="card-meta"><span>⭐ 8.6</span><span>更新至 第6话</span></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 最新更新 -->
+    <div class="container">
+        <section class="section" id="latest-update">
+            <div class="section-header">
+                <h2>嘀哩嘀哩 · 最新更新与动态</h2>
+                <span class="more-link">今日 2026年11月7日</span>
+            </div>
+            <div class="update-list">
+                <div class="update-item"><span class="update-time">10:30</span><span class="update-title">《葬送的芙莉莲》S2</span><span class="update-summary">第8话「旅行的终点」已上线，辛美尔回忆片段引发弹幕泪目。</span></div>
+                <div class="update-item"><span class="update-time">09:15</span><span class="update-title">《怪兽8号》</span><span class="update-summary">第10话更新，卡夫卡身份暴露倒计时，本集作画监督访谈公开。</span></div>
+                <div class="update-item"><span class="update-time">昨天 22:00</span><span class="update-title">《药屋少女的呢喃》</span><span class="update-summary">官方发布第二季制作决定PV，2027年1月放送预定。</span></div>
+                <div class="update-item"><span class="update-time">昨天 18:40</span><span class="update-title">《胆大党》</span><span class="update-summary">第6话新增“邪视”战斗片段，作画MAD在嘀哩嘀哩社区热转。</span></div>
+                <div class="update-item"><span class="update-time">昨天 14:20</span><span class="update-title">《我推的孩子》S2</span><span class="update-summary">第9话舞台剧公演回，ED卡绘制引发粉丝考据。</span></div>
+                <div class="update-item"><span class="update-time">昨天 11:05</span><span class="update-title">《迷宫饭》</span><span class="update-summary">第18话“炎龙”料理回，Trigger 美食作画特辑公开。</span></div>
+                <div class="update-item"><span class="update-time">11月5日</span><span class="update-title">《时光代理人》剧场版</span><span class="update-summary">国内定档12月20日，嘀哩嘀哩专题页上线倒计时预约。</span></div>
+                <div class="update-item"><span class="update-time">11月5日</span><span class="update-title">《败犬女主太多了！》</span><span class="update-summary">第7话更新，柠檬与八奈见对手戏成为本周讨论热点。</span></div>
+                <div class="update-item"><span class="update-time">11月4日</span><span class="update-title">新番情报</span><span class="update-summary">2027年冬季新番一览公开，含《咒术回战》第三季等12部作品。</span></div>
+                <div class="update-item"><span class="update-time">11月4日</span><span class="update-title">声优资讯</span><span class="update-summary">花泽香菜确认出演《药屋少女》第二季新角色，评论区的香菜党狂喜。</span></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 分类入口 -->
+    <div class="container">
+        <section class="section" id="category">
+            <div class="section-header">
+                <h2>按分类发现嘀哩嘀哩内容</h2>
+            </div>
+            <div class="category-grid">
+                <a href="/#category" class="category-item">热血战斗</a>
+                <a href="/#category" class="category-item">治愈日常</a>
+                <a href="/#category" class="category-item">悬疑推理</a>
+                <a href="/#category" class="category-item">奇幻冒险</a>
+                <a href="/#category" class="category-item">校园恋爱</a>
+                <a href="/#category" class="category-item">国创动画</a>
+                <a href="/#category" class="category-item">剧场版</a>
+                <a href="/#category" class="category-item">泡面番</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- 深度解析正文 -->
+    <div class="container">
+        <section class="section" id="deep-analysis">
+            <div class="section-header">
+                <h2>深度解析：嘀哩嘀哩的追番逻辑与内容价值</h2>
+            </div>
+            <div class="deep-analysis">
+                <p>在嘀哩嘀哩浏览番剧内容，你很快会发现它不是一个简单的“资源列表”。它更像一个编辑驱动的二次元内容站：每一部番剧的推荐理由都试图回答“为什么现在值得看这部剧”。例如，对于《葬送的芙莉莲》第二季，嘀哩嘀哩的解析会从“时间跨度带来的情感重量”切入，讨论芙莉莲对勇者辛美尔的追忆如何通过细微动作和静默分镜传递，而不是泛泛地夸“制作精良”。这种切入角度让读者在决定是否追番之前，先理解作品的叙事核心。</p>
+                <h3>题材与类型特点：从“标签”到“体验”</h3>
+                <p>嘀哩嘀哩的分类体系不满足于“热血”“恋爱”“奇幻”这类大标签，而是通过标签组合帮助用户找到体验相近的作品。比如“悬疑+古风+推理”指向《药屋少女的呢喃》，“美食+奇幻+冒险”对应《迷宫饭》。这种组合方式更贴近真实需求：用户搜索嘀哩嘀哩时，往往不是找某一部番的名字，而是想找“像某某番那样的作品”或者“最近有什么好看的轻松番”。因此，本站的推荐卡片同时标注了情绪标签（治愈、爽感、致郁）和制作标签（漫改、原创、Studio 名），让筛选更直观。</p>
+                <h3>人物与角色分析：为什么观众会“站队”</h3>
+                <p>角色讨论是嘀哩嘀哩社区最活跃的部分之一。以《【我推的孩子】》为例，第二季舞台剧篇让阿库亚、赤音、加奈三人的关系更加复杂，评论区自然会分裂成“赤音党”与“加奈党”。嘀哩嘀哩的角色分析模块会整理角色在关键话数中的动机变化，并引用漫画原作与动画演出的差异，帮助动画党理解“为什么这里要这样表现”。类似地，《败犬女主太多了！》中八奈见的“败犬感”之所以引发共鸣，正是因为嘀哩嘀哩的解析抓住了“不甘心却依然向前”的情绪内核，而非简单描述剧情。</p>
+                <h3>节奏与消费体验：新番、补番和“一口气看完”</h3>
+                <p>嘀哩嘀哩的更新追踪模块区分了“周更追剧”和“完结补番”两种节奏。对于正在播出的作品，更新列表会标注“本周看点”和“弹幕高能时刻”，方便追更用户快速定位；对于已完结作品，深度解析会提供“补番顺序建议”，比如《迷宫饭》适合下饭轻松看，《时光代理人》则更适合连贯观看以免遗忘伏笔。这种节奏上的引导，正是嘀哩嘀哩区别于普通聚合页的地方：它试图理解用户的时间成本，并给出可执行的观看建议。</p>
+                <h3>适合人群与同类比较</h3>
+                <p>如果你每周追番超过三部，喜欢在弹幕里找共鸣，也愿意在看完后读一篇长评，那么嘀哩嘀哩的内容密度会非常合适。相比纯资讯站，嘀哩嘀哩多了编辑视角的分析；相比纯社区，嘀哩嘀哩又有清晰的结构化信息。对于刚进入二次元的新人，建议从“热门推荐”和“FAQ”开始，再逐步深入到分类和深度解析；对于老观众，最新更新和评论区的讨论氛围则更值得停留。嘀哩嘀哩希望成为这样一个入口：你带着具体问题来，带着更多想看的番离开。</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- FAQ -->
+    <div class="container">
+        <section class="section" id="faq">
+            <div class="section-header">
+                <h2>嘀哩嘀哩 · 常见问题</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">嘀哩嘀哩主要收录什么类型的动漫？ <span>＋</span></div>
+                    <div class="faq-answer">嘀哩嘀哩以日本新番动画、国创动画、剧场版和部分经典老番的资讯与解析为主，同时也覆盖声优动态、制作公司情报和二次元社区讨论。页面中的推荐卡片涵盖热血、治愈、悬疑、奇幻、校园恋爱等主要类型，适合不同偏好的观众查找内容。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">在嘀哩嘀哩追番和在其他平台有什么不同？ <span>＋</span></div>
+                    <div class="faq-answer">嘀哩嘀哩更侧重“编辑推荐+社区讨论”的结合：每个热门推荐都带有简短的看点说明和标签组合，帮助你在打开视频之前先判断是否合口味。同时，深度解析模块会从角色、制作、节奏等角度提供长文分析，适合想了解作品背景的观众。如果你习惯只看播放列表，可能会觉得这里信息偏多；但如果你喜欢读理由，这里会比较对路。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">新番更新频率如何？页面上在哪里查看最新话？ <span>＋</span></div>
+                    <div class="faq-answer">嘀哩嘀哩的“最新更新与动态”模块会按照时间倒序展示当前热门作品的更新状态，包括上线话数、制作情报和社区热点。2026年11月7日当天可见《葬送的芙莉莲》第二季第8话、《怪兽8号》第10话等更新。对于周更作品，页面会标注大致更新时间段，方便追更用户安排观看。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">完全没看过动漫的新人应该从哪开始？ <span>＋</span></div>
+                    <div class="faq-answer">建议先从“热门番剧推荐”中挑选一部标签看起来轻松、评分较高的作品，比如《迷宫饭》（美食+奇幻）或《药屋少女的呢喃》（推理+古风），它们单集完成度高，不需要大量前置知识。然后可以浏览 FAQ 和深度解析中关于类型特点的部分，再根据自己的兴趣尝试《葬送的芙莉莲》这类节奏较慢但情感厚实的作品。嘀哩嘀哩的分类入口也按情绪和题材做了细分，方便逐步探索。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">嘀哩嘀哩的评论区和弹幕氛围怎么样？ <span>＋</span></div>
+                    <div class="faq-answer">从本页展示的用户评论来看，嘀哩嘀哩的讨论氛围偏向“同好交流”，既有认真分析角色动机的长评，也有轻松的吐槽和安利。评论时间集中在近30天内，内容涵盖剧情讨论、作画评价、更新期待等。如果你喜欢在看完一集后看看别人的观点，这里的评论区可以作为参考入口。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">页面上的“深度解析”是官方内容吗？ <span>＋</span></div>
+                    <div class="faq-answer">深度解析模块由嘀哩嘀哩编辑团队或社区资深用户撰写，基于公开播出内容、制作访谈和原作信息进行整理分析，属于第三方内容解读，并非动画官方声明。我们会在解析中尽量区分“事实信息”和“编辑观点”，读者也可以结合评论区讨论形成自己的判断。如果你发现信息有误，欢迎通过页面底部的反馈渠道指出。</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 用户评论 -->
+    <div class="container">
+        <section class="section" id="comments">
+            <div class="section-header">
+                <h2>嘀哩嘀哩 · 社区短评</h2>
+                <span class="more-link">近30天热评</span>
+            </div>
+            <div class="comment-list">
+                <div class="comment-item"><div class="comment-header"><span class="comment-name">@追番小能手</span><span class="comment-date">11月6日</span></div><div class="comment-text">芙莉莲第8话那个回忆镜头真的绷不住了，嘀哩嘀哩的更新提醒比我自己记还准。</div></div>
+                <div class="comment-item"><div class="comment-header"><span class="comment-name">@药屋常客</span><span class="comment-date">11月5日</span></div><div class="comment-text">猫猫和壬氏的互动太少了这集，不过推理部分还行。等第二季消息。</div></div>
+                <div class="comment-item"><div class="comment-header"><span class="comment-name">@作画豚</span><span class="comment-date">11月5日</span></div><div class="comment-text">胆大党第6话的邪视战斗，分镜绝了，值得逐帧看。嘀哩嘀哩的解析里提到的那个转场确实妙。</div></div>
+                <div class="comment-item"><div class="comment-header"><span class="comment-name">@败犬应援团</span><span class="comment-date">11月4日</span></div><div class="comment-text">八奈见这集又被迫害了，笑死。不过A-1把败犬感做得很可爱，不招人烦。</div></div>
+                <div class="comment-item"><div class="comment-header"><span class="comment-name">@怪兽8号打工人</span><span class="comment-date">11月4日</span></div><div class="comment-text">卡夫卡什么时候能公开身份啊，急。本集打戏很爽，但节奏稍微有点拖。</div></div>
+                <div class="comment-item"><div class="comment-header"><span class="comment-name">@迷宫饭料理长</span><span class="comment-date">11月3日</span></div><div class="comment-text">炎龙那集看饿了，Trigger 是懂美食的。嘀哩嘀哩的标签里“美食”很准确。</div></div>
+                <div class="comment-item"><div class="comment-header"><span class="comment-name">@时光代理人考据</span><span class="comment-date">11月3日</span></div><div class="comment-text">剧场版终于定档了，希望剧情能把第二季的坑填一下。已经预约专题页。</div></div>
+                <div class="comment-item"><div class="comment-header"><span class="comment-name">@我推的赤音党</span><span class="comment-date">11月2日</span></div><div class="comment-text">舞台剧篇动画化之后赤音的高光更明显了，嘀哩嘀哩角色分析写得挺细，虽然我是加奈党。</div></div>
+                <div class="comment-item"><div class="comment-header"><span class="comment-name">@新番扫雷员</span><span class="comment-date">11月2日</span></div><div class="comment-text">这季新番整体质量不错，但有些番更新太慢了，嘀哩嘀哩的更新列表可以按日期筛选吗？希望以后加这个功能。</div></div>
+                <div class="comment-item"><div class="comment-header"><span class="comment-name">@泡面番爱好者</span><span class="comment-date">11月1日</span></div><div class="comment-text">分类里能不能多加点泡面番？现在好像只有少数几部。不过整体分类比很多站清楚。</div></div>
+                <div class="comment-item"><div class="comment-header"><span class="comment-name">@声优控</span><span class="comment-date">10月30日</span></div><div class="comment-text">花泽香菜新角色期待！嘀哩嘀哩的声优资讯更新挺快，希望多来点广播剧消息。</div></div>
+                <div class="comment-item"><div class="comment-header"><span class="comment-name">@老宅阿伟</span><span class="comment-date">10月28日</span></div><div class="comment-text">页面排版看着舒服，不像有些站广告满天飞。深度解析偶尔看看还挺有收获的。</div></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 相关资讯 -->
+    <div class="container">
+        <section class="section" id="news">
+            <div class="section-header">
+                <h2>二次元资讯 · 嘀哩嘀哩速报</h2>
+                <span class="more-link">更多资讯</span>
+            </div>
+            <div class="news-grid">
+                <div class="news-card"><div class="news-date">2026年11月7日</div><div class="news-title">《葬送的芙莉莲》第二季第8话播出，辛美尔回忆片段登上热搜</div><div class="news-summary">本集以芙莉莲的视角重新审视勇者一行的旅途，观众评价“安静但后劲很大”，嘀哩嘀哩深度解析同步更新。</div></div>
+                <div class="news-card"><div class="news-date">2026年11月6日</div><div class="news-title">《药屋少女的呢喃》第二季制作决定，2027年1月放送</div><div class="news-summary">官方公开先导视觉图与制作阵容，猫猫的声优悠木碧将继续出演，嘀哩嘀哩将跟进后续情报。</div></div>
+                <div class="news-card"><div class="news-date">2026年11月5日</div><div class="news-title">《时光代理人》剧场版国内定档12月20日</div><div class="news-summary">剧场版将承接第二季结尾，讲述程小时与陆光的新案件。嘀哩嘀哩专题页已上线预约入口。</div></div>
+                <div class="news-card"><div class="news-date">2026年11月4日</div><div class="news-title">2027年冬季新番一览公开，《咒术回战》第三季领衔</div><div class="news-summary">本次公开的12部作品中包含多部续作与原创动画，嘀哩嘀哩将在近期推出新番期待度投票。</div></div>
+                <div class="news-card"><div class="news-date">2026年11月3日</div><div class="news-title">《怪兽8号》第10话作画监督访谈：如何设计卡夫卡的怪兽形态</div><div class="news-summary">Production I.G 的作画团队分享了怪兽8号动作戏的设计思路，嘀哩嘀哩翻译整理已发布。</div></div>
+                <div class="news-card"><div class="news-date">2026年11月2日</div><div class="news-title">《胆大党》第6话“邪视”战斗片段作画MAD播放量破百万</div><div class="news-summary">Science SARU 的自由作画风格在社交平台引发讨论，嘀哩嘀哩社区内相关解析帖热度上升。</div></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <div class="logo-area" style="gap: 8px;">
+                        <div class="logo-badge" style="background: linear-gradient(135deg, #c084fc, #f472b6);">嘀</div>
+                        <span class="logo-text" style="font-size: 1.6rem;">嘀哩嘀哩</span>
+                    </div>
+                    <p>嘀哩嘀哩 · 动漫番剧追更社区。我们整理新番资讯、声优情报、深度解析与用户讨论，为二次元爱好者提供清晰的内容导航。本站内容为编辑整理与用户分享，仅供参考。</p>
+                </div>
+                <div class="footer-links">
+                    <div>
+                        <h4>内容导航</h4>
+                        <a href="/#hot-anime">热门推荐</a>
+                        <a href="/#latest-update">最新更新</a>
+                        <a href="/#deep-analysis">深度解析</a>
+                        <a href="/#category">分类索引</a>
+                    </div>
+                    <div>
+                        <h4>社区</h4>
+                        <a href="/#faq">常见问题</a>
+                        <a href="/#comments">用户评论</a>
+                        <a href="/#news">二次元资讯</a>
+                        <a href="/#intro">关于嘀哩嘀哩</a>
+                    </div>
+                    <div>
+                        <h4>友情链接</h4>
+                        <a href="/#">番剧资料库（占位）</a>
+                        <a href="/#">声优图鉴（占位）</a>
+                        <a href="/#">同人社区（占位）</a>
+                        <a href="/#">动画制作公司索引（占位）</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 嘀哩嘀哩 · 内容仅供学习与交流 · 页面信息基于公开资料整理</span>
+                <span>免责声明：本站不提供在线播放资源，所有番剧名称与商标归各自版权方所有。</span>
+            </div>
+        </div>
+    </footer>
+</body>
+  </html>
