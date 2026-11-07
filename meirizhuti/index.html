@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>每日主题大赛在线-在线主题赛参赛入口_每日大赛作品与规则解析</title>
+<meta name="description" content="每日主题大赛在线专题页，聚合每日主题大赛参赛入口、赛制规则、作品展示与获奖名单。2026年11月7日更新，适合想快速了解在线主题赛日程、评审标准与报名流程的创作者和观众收藏。">
+<meta name="keywords" content="每日主题大赛在线,在线主题赛,主题大赛作品,每日大赛规则,在线赛事入口">
+<style>
+:root{
+  --bg:#f7f4ef;
+  --surface:#ffffff;
+  --surface-2:#fdfaf5;
+  --ink:#1e1b17;
+  --muted:#6b6258;
+  --line:#e4d9cd;
+  --accent:#c2572e;
+  --accent-soft:#f4e3d7;
+  --accent-2:#2f5d57;
+  --gold:#b58a3c;
+  --shadow:0 8px 22px rgba(40,28,18,.07);
+  --radius:18px;
+  --maxw:1200px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:
+    radial-gradient(1200px 500px at 10% -10%, #fff7ec 0%, transparent 60%),
+    radial-gradient(900px 400px at 100% 0%, #eef5f2 0%, transparent 55%),
+    var(--bg);
+  color:var(--ink);
+  line-height:1.75;
+  font-size:16px;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.container{width:min(var(--maxw),92vw);margin:0 auto}
+.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:10px 16px;z-index:99;border-radius:0 0 10px 0}
+.skip:focus{left:0}
+
+/* header */
+.site-head{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(10px);
+  background:rgba(247,244,239,.86);
+  border-bottom:1px solid var(--line);
+}
+.head-inner{display:flex;align-items:center;gap:22px;padding:14px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px;font-size:19px;white-space:nowrap}
+.brand .mark{
+  width:34px;height:34px;border-radius:9px;
+  background:conic-gradient(from 210deg,#c2572e,#b58a3c,#2f5d57,#c2572e);
+  display:grid;place-items:center;color:#fff;font-size:13px;font-weight:900;
+  box-shadow:0 4px 12px rgba(194,87,46,.25)
+}
+.nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:6px}
+.nav a{
+  padding:7px 12px;border-radius:999px;font-size:14px;color:var(--muted);
+  transition:.18s;border:1px solid transparent
+}
+.nav a:hover{color:var(--accent);background:#fff;border-color:var(--line)}
+.head-actions{margin-left:auto;display:flex;gap:10px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  padding:9px 17px;border-radius:999px;font-size:14px;font-weight:600;
+  border:1px solid var(--line);background:#fff;cursor:pointer;transition:.18s;color:var(--ink)
+}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{background:#a8461f;border-color:#a8461f}
+.menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:10px;padding:7px 10px;font-size:16px;cursor:pointer}
+
+/* hero */
+.hero{
+  position:relative;overflow:hidden;
+  border-radius:26px;margin:26px auto 0;
+  background:
+    radial-gradient(700px 300px at 88% 10%, rgba(255,255,255,.6), transparent 70%),
+    linear-gradient(125deg,#fdf6ec 0%,#f6e8d8 42%,#e9f2ee 100%);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+  padding:46px 46px 40px;
+}
+.hero::after{
+  content:"";position:absolute;right:-70px;top:-70px;width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, rgba(194,87,46,.16), transparent 65%);
+}
+.hero-grid{display:grid;grid-template-columns:1.35fr .85fr;gap:36px;align-items:center;position:relative;z-index:2}
+.kicker{
+  display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;
+  letter-spacing:.6px;text-transform:uppercase;color:var(--accent);
+  background:#fff;border:1px solid var(--line);padding:6px 13px;border-radius:999px;margin-bottom:16px
+}
+.kicker i{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block;animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+h1{font-size:clamp(26px,3.4vw,40px);line-height:1.25;margin:0 0 14px;letter-spacing:-.5px;font-weight:900}
+h1 em{font-style:normal;color:var(--accent);position:relative}
+h1 em::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:8px;background:var(--accent-soft);z-index:-1;border-radius:4px}
+.hero p.lead{color:var(--muted);font-size:15.5px;margin:0 0 10px;max-width:56ch}
+.searchbar{
+  display:flex;gap:8px;background:#fff;border:1px solid var(--line);border-radius:16px;
+  padding:8px;margin-top:22px;box-shadow:0 4px 16px rgba(40,28,18,.05);max-width:530px
+}
+.searchbar input{
+  flex:1;border:0;outline:0;background:transparent;font-size:15px;padding:9px 12px;color:var(--ink);font-family:inherit
+}
+.searchbar input::placeholder{color:#a89c8e}
+.hero-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.hero-tags a{
+  font-size:13px;background:rgba(255,255,255,.78);border:1px solid var(--line);
+  padding:7px 13px;border-radius:999px;color:var(--muted);transition:.18s
+}
+.hero-tags a:hover{background:var(--accent);color:#fff;border-color:var(--accent);transform:translateY(-1px)}
+.hero-aside{
+  background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:20px;padding:20px;
+  backdrop-filter:blur(6px)
+}
+.hero-aside h3{margin:0 0 6px;font-size:14px;color:var(--accent-2);letter-spacing:.4px}
+.hero-aside .today{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--muted);margin-bottom:14px}
+.mini-stat{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mini-stat div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.mini-stat b{display:block;font-size:20px;line-height:1.2;color:var(--accent)}
+.mini-stat span{font-size:12px;color:var(--muted)}
+
+/* section shell */
+section{padding:44px 0 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(21px,2.3vw,27px);margin:0;letter-spacing:-.3px;font-weight:900}
+.sec-head h2 span{color:var(--accent)}
+.sec-head p{margin:6px 0 0;color:var(--muted);font-size:14px;max-width:62ch}
+.more-link{font-size:13.5px;color:var(--accent);font-weight:600;border-bottom:1px dashed rgba(194,87,46,.4);padding-bottom:2px}
+.more-link:hover{color:#a8461f}
+
+/* intro */
+.intro-wrap{
+  display:grid;grid-template-columns:1.5fr 1fr;gap:24px;align-items:start
+}
+.intro-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 30px;box-shadow:var(--shadow)
+}
+.intro-card h3{margin:0 0 12px;font-size:18px}
+.intro-card p{margin:0 0 12px;color:#3b342d;font-size:15px}
+.intro-card p:last-child{margin-bottom:0}
+.fact-list{display:grid;gap:10px}
+.fact{
+  display:flex;gap:12px;align-items:flex-start;background:var(--surface-2);
+  border:1px solid var(--line);border-radius:14px;padding:13px 15px
+}
+.fact b{font-size:13px;color:var(--accent-2);min-width:64px;display:block}
+.fact span{font-size:13.5px;color:var(--muted)}
+
+/* cards */
+.grid-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:18px}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow);transition:.22s;display:flex;flex-direction:column
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(40,28,18,.12);border-color:#d8c6b4}
+.card .thumb{
+  height:128px;position:relative;
+  background:linear-gradient(135deg,#efdccb,#f8efe5 55%,#e2efe9);
+  display:flex;align-items:flex-end;padding:12px
+}
+.card .thumb .badge{
+  font-size:11.5px;font-weight:700;background:rgba(255,255,255,.9);
+  border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--accent)
+}
+.card .thumb .badge.alt{color:var(--accent-2)}
+.card-body{padding:16px 17px 18px;display:flex;flex-direction:column;gap:9px;flex:1}
+.card-body h3{margin:0;font-size:16px;line-height:1.45}
+.card-body .desc{font-size:13.5px;color:var(--muted);margin:0;flex:1}
+.tag-row{display:flex;flex-wrap:wrap;gap:6px}
+.tag{
+  font-size:11.5px;color:#5e5449;background:#f4efe7;border:1px solid #e9dfd2;
+  padding:3px 9px;border-radius:999px
+}
+.card-meta{display:flex;justify-content:space-between;font-size:12px;color:#9b8f81;border-top:1px dashed var(--line);padding-top:9px;margin-top:2px}
+
+/* update list */
+.update-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:22px}
+.update-list{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:8px 6px;box-shadow:var(--shadow)}
+.update-item{display:flex;gap:14px;padding:13px 16px;border-bottom:1px dashed var(--line);align-items:flex-start}
+.update-item:last-child{border-bottom:0}
+.update-item .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);margin-top:9px;flex:0 0 9px;box-shadow:0 0 0 4px rgba(194,87,46,.12)}
+.update-item .u-body{flex:1}
+.update-item h4{margin:0 0 3px;font-size:14.5px}
+.update-item p{margin:0;font-size:13px;color:var(--muted)}
+.update-item time{font-size:12px;color:#a89c8e;white-space:nowrap}
+.side-panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);height:fit-content}
+.side-panel h3{margin:0 0 12px;font-size:16px}
+.chip-cloud{display:flex;flex-wrap:wrap;gap:8px}
+.chip-cloud a{font-size:12.5px;background:#f6f1e9;border:1px solid var(--line);padding:5px 11px;border-radius:999px;color:var(--muted);transition:.16s}
+.chip-cloud a:hover{background:var(--accent-2);color:#fff;border-color:var(--accent-2)}
+
+/* categories */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+.cat{
+  display:block;background:var(--surface);border:1px solid var(--line);border-radius:15px;
+  padding:17px 18px;box-shadow:var(--shadow);transition:.2s;position:relative;overflow:hidden
+}
+.cat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent-soft);transition:.2s}
+.cat:hover{transform:translateY(-3px);border-color:#d8c6b4}
+.cat:hover::before{background:var(--accent)}
+.cat b{display:block;font-size:15px;margin-bottom:4px}
+.cat span{font-size:12.5px;color:var(--muted)}
+
+/* deep read */
+.deep{
+  background:var(--surface);border:1px solid var(--line);border-radius:22px;
+  padding:34px 38px;box-shadow:var(--shadow)
+}
+.deep h2{margin-top:0}
+.deep h3{font-size:17px;margin:26px 0 8px;color:var(--accent-2)}
+.deep p{margin:0 0 14px;color:#3b342d;font-size:15.2px}
+.deep blockquote{
+  margin:20px 0;padding:16px 20px;border-left:4px solid var(--accent);
+  background:var(--surface-2);border-radius:0 12px 12px 0;color:#4b4238;font-size:14.5px
+}
+.deep ul{padding-left:20px;color:#3b342d;font-size:15px}
+.deep li{margin-bottom:7px}
+
+/* guide */
+.guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.guide{
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;
+  box-shadow:var(--shadow);transition:.2s
+}
+.guide:hover{transform:translateY(-3px)}
+.guide .num{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--accent);font-weight:700;letter-spacing:1px}
+.guide h3{margin:6px 0 7px;font-size:15.5px}
+.guide p{margin:0;font-size:13.5px;color:var(--muted)}
+
+/* faq */
+.faq{display:grid;gap:12px}
+.faq details{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0 18px;
+  box-shadow:var(--shadow);transition:.2s
+}
+.faq details[open]{border-color:#d8c6b4;background:#fffdf9}
+.faq summary{
+  list-style:none;cursor:pointer;padding:16px 0;font-weight:600;font-size:15px;display:flex;gap:10px;align-items:center;justify-content:space-between
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"＋";color:var(--accent);font-weight:700;transition:.2s}
+.faq details[open] summary::after{content:"－"}
+.faq .a{padding:0 0 16px;color:var(--muted);font-size:14.3px;border-top:1px dashed var(--line);margin-top:-1px;padding-top:12px}
+
+/* comments */
+.comment-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:15px}
+.comment{
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 17px;box-shadow:var(--shadow)
+}
+.comment .who{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.avatar{
+  width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800;color:#fff;
+  background:linear-gradient(135deg,#c2572e,#b58a3c)
+}
+.comment .who b{font-size:13.5px}
+.comment .who time{margin-left:auto;font-size:11.5px;color:#a89c8e}
+.comment p{margin:0;font-size:13.6px;color:#4b4238}
+
+/* news */
+.news-list{display:grid;gap:14px}
+.news-item{
+  display:grid;grid-template-columns:96px 1fr;gap:16px;background:var(--surface);border:1px solid var(--line);
+  border-radius:16px;padding:16px 18px;box-shadow:var(--shadow);transition:.2s
+}
+.news-item:hover{transform:translateY(-2px)}
+.news-item time{font-size:12px;color:#a89c8e;font-family:ui-monospace,Menlo,monospace}
+.news-item h3{margin:0 0 5px;font-size:15.5px}
+.news-item p{margin:0;font-size:13.5px;color:var(--muted)}
+
+/* footer */
+footer{
+  margin-top:56px;border-top:1px solid var(--line);background:rgba(255,255,255,.6);
+  padding:38px 0 28px
+}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:26px}
+.foot-brand p{font-size:13px;color:var(--muted);margin:10px 0 0;max-width:38ch}
+.foot-col h4{font-size:13.5px;margin:0 0 10px;color:var(--accent-2)}
+.foot-col a{display:block;font-size:13px;color:var(--muted);padding:3px 0;transition:.16s}
+.foot-col a:hover{color:var(--accent)}
+.foot-bottom{border-top:1px solid var(--line);margin-top:26px;padding-top:18px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;color:#9b8f81}
+
+/* responsive */
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:26px}
+  .intro-wrap{grid-template-columns:1fr}
+  .update-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .hero{padding:34px 26px}
+  .deep{padding:28px 24px}
+}
+@media(max-width:720px){
+  .nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 16px;flex-direction:column;gap:2px}
+  .nav.open{display:flex}
+  .menu-toggle{display:inline-block}
+  .head-inner{position:relative}
+  .head-actions .btn.primary{display:none}
+  .news-item{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  h1{font-size:26px}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+
+<header class="site-head">
+  <div class="container head-inner">
+    <a class="brand" href="/#hero">
+      <span class="mark">赛</span>
+      每日主题大赛在线
+    </a>
+    <nav class="nav" id="mainNav" aria-label="主导航">
+      <a href="/#hero">大赛首页</a>
+      <a href="/#intro">赛事简介</a>
+      <a href="/#hot">热门作品</a>
+      <a href="/#updates">最新动态</a>
+      <a href="/#cats">分类入口</a>
+      <a href="/#deep">深度解析</a>
+      <a href="/#faq">常见问题</a>
+      <a href="/#comments">用户评论</a>
+      <a href="/#news">赛事资讯</a>
+    </nav>
+    <div class="head-actions">
+      <button class="btn" type="button" onclick="document.getElementById('heroSearch').focus()">搜索</button>
+      <a class="btn primary" href="/#hot">立即参赛</a>
+      <button class="menu-toggle" type="button" aria-label="打开菜单" onclick="document.getElementById('mainNav').classList.toggle('open')">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="container" style="padding-top:0" id="hero">
+  <div class="hero">
+    <div class="hero-grid">
+      <div>
+        <span class="kicker"><i></i> 在线主题赛 · 每日更新</span>
+        <h1><em>每日主题大赛在线</em> —— 参赛入口、作品展示与赛制解析</h1>
+        <p class="lead">每天一个新主题，在线提交作品，实时查看评审进度与获奖名单。2026年11月7日最新赛程与热门作品已更新。</p>
+        <p class="lead">无论你是第一次参加主题大赛，还是想围观优秀作品找灵感，这里都能快速找到报名规则、往期案例和创作者讨论。</p>
+        <div class="searchbar" role="search">
+          <input id="heroSearch" type="search" placeholder="搜索主题、赛制、作品或创作者……" aria-label="站内搜索">
+          <button class="btn primary" type="button" onclick="alert('演示搜索：请从下方栏目浏览每日主题大赛在线内容。')">搜索</button>
+        </div>
+        <div class="hero-tags">
+          <a href="/#hot">今日主题赛</a>
+          <a href="/#updates">赛程日历</a>
+          <a href="/#cats">新手参赛</a>
+          <a href="/#deep">评审标准</a>
+          <a href="/#news">获奖名单</a>
+          <a href="/#comments">创作者讨论</a>
+          <a href="/#faq">报名答疑</a>
+        </div>
+      </div>
+      <aside class="hero-aside">
+        <h3>今日赛事快照</h3>
+        <div class="today">2026-11-07 周六 · 第 312 期</div>
+        <div class="mini-stat">
+          <div><b>1,284</b><span>今日在线提交</span></div>
+          <div><b>47</b><span>进行中主题</span></div>
+          <div><b>9.2</b><span>热门作品评分</span></div>
+          <div><b>21:00</b><span>今日截稿提醒</span></div>
+        </div>
+        <p style="font-size:12.5px;color:var(--muted);margin:14px 0 0">数据为演示统计，用于说明每日主题大赛在线的赛程密度与参与规模。</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="container" id="intro">
+  <div class="sec-head">
+    <div>
+      <h2>每日主题大赛在线<span> 是什么</span></h2>
+      <p>一个围绕“每日主题创作赛”搭建的内容聚合页：把赛事规则、作品展示、评审视角和创作者经验放在同一个浏览路径里。</p>
+    </div>
+    <a class="more-link" href="/#faq">查看参赛答疑 →</a>
+  </div>
+  <div class="intro-wrap">
+    <div class="intro-card">
+      <h3>把每日主题赛的搜索需求一次讲清</h3>
+      <p>很多人在搜“每日主题大赛在线”时，其实是想找三件事：今天是什么主题、怎么报名提交、往期获奖作品在哪里看。这个页面按照这三条主线组织内容，先给入口，再给规则，最后用作品和评论补足判断依据。</p>
+      <p>每日主题大赛在线的节奏通常是当天公布主题、限时提交、次日公布入围。对创作者来说，它更像一个轻量、可持续的练习场；对观众来说，它是一个每天都能发现新点子的作品流。页面中的热门卡片、更新列表和分类入口都围绕这个节奏设计，方便反复回访。</p>
+      <p>如果你关心评审标准，可以直接跳到深度解析；如果你想先看别人怎么做，热门作品和最新动态会更直观；第一次参赛则建议从常见问题和体验指南读起。页面内容会随赛程更新，收藏后按日期回看更高效。</p>
+    </div>
+    <div class="fact-list">
+      <div class="fact"><b>适合人群</b><span>想练手的新手创作者、找灵感的参赛者、围观优秀作品的观众、需要选题参考的社团组织者。</span></div>
+      <div class="fact"><b>核心内容</b><span>每日主题公布、限时提交入口、评审维度说明、入围与获奖作品展示、创作者经验讨论。</span></div>
+      <div class="fact"><b>浏览价值</b><span>把分散在公告、作品页和评论区里的信息收拢到一条阅读路径，降低反复搜索成本。</span></div>
+      <div class="fact"><b>更新节奏</b><span>每日主题与截稿提醒；每周汇总热门作品；每月整理评审观察与获奖名单。</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOT -->
+<section class="container" id="hot">
+  <div class="sec-head">
+    <div>
+      <h2>今日热门<span>主题赛作品</span></h2>
+      <p>从在线提交中挑出完成度、创意和讨论度较高的作品，附带看点与标签，方便快速判断是否值得点开。</p>
+    </div>
+    <a class="more-link" href="/#updates">查看全部更新 →</a>
+  </div>
+  <div class="grid-cards">
+
+    <article class="card">
+      <div class="thumb"><span class="badge">今日主题 · 光影</span></div>
+      <div class="card-body">
+        <h3>《窗格里的下午四点》</h3>
+        <p class="desc">用室内光影切割画面，把普通窗台拍出叙事感。构图干净，情绪克制，适合研究“小场景如何做出层次”。</p>
+        <div class="tag-row"><span class="tag">摄影</span><span class="tag">光影练习</span><span class="tag">高完成度</span></div>
+        <div class="card-meta"><span>评分 9.4</span><span>今日 386 次浏览</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb"><span class="badge alt">连续参赛 · 12 天</span></div>
+      <div class="card-body">
+        <h3>《地铁末班车的七种声音》</h3>
+        <p class="desc">音频类作品，把报站、脚步、闸机提示音重新编排成一段城市夜曲。适合关注声音设计和节奏组织的读者。</p>
+        <div class="tag-row"><span class="tag">音频</span><span class="tag">城市观察</span><span class="tag">实验性</span></div>
+        <div class="card-meta"><span>评分 9.1</span><span>评论 46 条</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb"><span class="badge">命题创作 · 边界</span></div>
+      <div class="card-body">
+        <h3>《画在作业本边缘的小人》</h3>
+        <p class="desc">插画作品，把“边界”理解成纸张与想象之间的缝隙。线条松弛，叙事留白多，评论区讨论集中在主题转译。</p>
+        <div class="tag-row"><span class="tag">插画</span><span class="tag">命题解读</span><span class="tag">叙事感</span></div>
+        <div class="card-meta"><span>评分 8.9</span><span>今日 274 次浏览</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb"><span class="badge alt">短文本 · 300 字内</span></div>
+      <div class="card-body">
+        <h3>《一个没有寄出的快递地址》</h3>
+        <p class="desc">微小说类作品，靠一个细节撑起完整情绪。篇幅很短，但结尾处理得干净，适合想练短篇结构的人参考。</p>
+        <div class="tag-row"><span class="tag">写作</span><span class="tag">微小说</span><span class="tag">短篇结构</span></div>
+        <div class="card-meta"><span>评分 8.8</span><span>评论 31 条</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb"><span class="badge">视频类 · 60 秒</span></div>
+      <div class="card-body">
+        <h3>《电梯门开合之间》</h3>
+        <p class="desc">一分钟短视频，用电梯开合做转场，串联三个小场景。剪辑点准确，主题贴合度高，是本期视频组的讨论热点。</p>
+        <div class="tag-row"><span class="tag">视频</span><span class="tag">转场设计</span><span class="tag">限时创作</span></div>
+        <div class="card-meta"><span>评分 9.0</span><span>今日 412 次浏览</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb"><span class="badge alt">设计类 · 海报</span></div>
+      <div class="card-body">
+        <h3>《把标题拆成四块》</h3>
+        <p class="desc">字体海报练习，把主题文字拆解重组，版式有实验感。评论区对可读性有分歧，但创意方向很明确。</p>
+        <div class="tag-row"><span class="tag">平面设计</span><span class="tag">字体实验</span><span class="tag">争议作品</span></div>
+        <div class="card-meta"><span>评分 8.6</span><span>评论 58 条</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb"><span class="badge">手工 · 材料再造</span></div>
+      <div class="card-body">
+        <h3>《旧报纸做的城市天际线》</h3>
+        <p class="desc">用废弃报纸剪贴出城市轮廓，材料普通但完成度高。适合关注可持续创作和低成本方案的参赛者。</p>
+        <div class="tag-row"><span class="tag">手工</span><span class="tag">材料再造</span><span class="tag">低成本</span></div>
+        <div class="card-meta"><span>评分 8.7</span><span>今日 198 次浏览</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb"><span class="badge alt">新人首投 · 入围</span></div>
+      <div class="card-body">
+        <h3>《第一次参加就踩了三个坑》</h3>
+        <p class="desc">图文复盘，记录首次参加每日主题大赛在线的真实过程：选题过大、提交过晚、忽略格式要求。经验帖属性强。</p>
+        <div class="tag-row"><span class="tag">参赛复盘</span><span class="tag">新人经验</span><span class="tag">避坑</span></div>
+        <div class="card-meta"><span>评分 8.5</span><span>收藏 124 次</span></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- UPDATES -->
+<section class="container" id="updates">
+  <div class="sec-head">
+    <div>
+      <h2>最新更新<span>与赛程动态</span></h2>
+      <p>围绕 2026 年 11 月 7 日前后的赛程整理，包含主题发布、截稿提醒和入围公布。</p>
+    </div>
+    <a class="more-link" href="/#cats">按分类浏览 →</a>
+  </div>
+  <div class="update-grid">
+    <div class="update-list">
+      <div class="update-item"><span class="dot"></span><div class="u-body"><h4>第 312 期主题「留白」已发布</h4><p>今日 09:00 公布，支持图文、音频、视频与手工四类提交，截稿时间为 21:00。</p></div><time>11-07</time></div>
+      <div class="update-item"><span class="dot"></span><div class="u-body"><h4>第 311 期入围名单公布</h4><p>共 24 件作品入围，其中 6 件进入终评。终评直播安排在 11 月 8 日 20:00。</p></div><time>11-07</time></div>
+      <div class="update-item"><span class="dot"></span><div class="u-body"><h4>音频组提交格式说明更新</h4><p>新增采样率与时长上限提示，建议提交前检查文件大小，避免临近截稿上传失败。</p></div><time>11-06</time></div>
+      <div class="update-item"><span class="dot"></span><div class="u-body"><h4>「城市观察」系列主题周开启</h4><p>11 月 8 日至 14 日连续七天围绕城市生活命题，适合做系列创作和连续参赛。</p></div><time>11-06</time></div>
+      <div class="update-item"><span class="dot"></span><div class="u-body"><h4>新人引导页新增评审维度示例</h4><p>用三件往期作品拆解“主题贴合、完成度、表达清晰”三项评分依据，方便对照准备。</p></div><time>11-05</time></div>
+      <div class="update-item"><span class="dot"></span><div class="u-body"><h4>第 310 期优秀作品合集上线</h4><p>收录 18 件作品，附编辑短评和创作者自述，适合作为选题与形式参考。</p></div><time>11-05</time></div>
+      <div class="update-item"><span class="dot"></span><div class="u-body"><h4>视频组新增 60 秒限时赛道</h4><p>与常规时长并行，鼓励更紧凑的叙事结构，提交时需在标题中标注赛道。</p></div><time>11-04</time></div>
+      <div class="update-item"><span class="dot"></span><div class="u-body"><h4>每日主题大赛在线搜索热词更新</h4><p>近七日高频搜索集中在“报名入口”“评审标准”“获奖作品”“新人怎么参加”。</p></div><time>11-04</time></div>
+    </div>
+    <aside class="side-panel">
+      <h3>本周热门标签</h3>
+      <div class="chip-cloud">
+        <a href="/#hot">限时创作</a>
+        <a href="/#deep">评审标准</a>
+        <a href="/#faq">新人参赛</a>
+        <a href="/#hot">短文本</a>
+        <a href="/#hot">视频转场</a>
+        <a href="/#news">获奖名单</a>
+        <a href="/#comments">创作复盘</a>
+        <a href="/#cats">命题解读</a>
+        <a href="/#updates">赛程日历</a>
+        <a href="/#hot">低成本方案</a>
+      </div>
+      <h3 style="margin-top:22px">今日截稿提醒</h3>
+      <p style="font-size:13.5px;color:var(--muted);margin:0">第 312 期「留白」将于 21:00 截稿。建议提前 30 分钟完成提交，并保留作品源文件以便复核。</p>
+    </aside>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="container" id="cats">
+  <div class="sec-head">
+    <div>
+      <h2>分类<span>入口</span></h2>
+      <p>按创作形式与参赛阶段整理，方便从自己熟悉的类别进入每日主题大赛在线。</p>
+    </div>
+  </div>
+  <div class="cat-grid">
+    <a class="cat" href="/#hot"><b>图文创作</b><span>摄影、插画、海报与图文叙事</span></a>
+    <a class="cat" href="/#hot"><b>音频与声音</b><span>环境声、短音频与声音设计</span></a>
+    <a class="cat" href="/#hot"><b>短视频</b><span>60 秒限时赛道与转场练习</span></a>
+    <a class="cat" href="/#hot"><b>文字写作</b><span>微小说、短散文与命题写作</span></a>
+    <a class="cat" href="/#hot"><b>手工与材料</b><span>低成本再造与实物创作</span></a>
+    <a class="cat" href="/#faq"><b>新人入门</b><span>报名流程、格式要求与避坑</span></a>
+    <a class="cat" href="/#deep"><b>评审视角</b><span>评分维度与作品拆解</span></a>
+    <a class="cat" href="/#news"><b>获奖与入围</b><span>往期名单与优秀作品合集</span></a>
+  </div>
+</section>
+
+<!-- DEEP -->
+<section class="container" id="deep">
+  <div class="deep">
+    <h2>深度解析：每日主题大赛在线怎么参加、怎么被看见</h2>
+    <p>每日主题大赛在线的核心机制并不复杂：每天给出一个主题，参与者在限定时间内完成并提交作品，随后进入评审与展示环节。真正拉开差距的，往往不是工具多高级，而是对主题的理解速度和提交质量的控制。很多新手第一次参加时，会把时间大量花在“想一个完美点子”上，结果压缩了制作和检查的时间，反而在完成度上失分。</p>
+    <p>从往期作品看，主题贴合度是评审最先感知的维度。所谓贴合，不是把主题词直接写进标题，而是让作品内部有一个清晰的选择：为什么用这种形式、为什么保留这个细节、为什么删掉那部分内容。以“留白”这类抽象主题为例，摄影作品可能通过大面积负空间回应，写作作品则可能通过省略关键信息制造余味，视频作品可以用停顿和空镜完成转译。形式不同，但判断标准是一致的：观众能否在短时间内抓住你的回应方式。</p>
+    <h3>选题与提交节奏</h3>
+    <p>每日主题大赛在线的限时属性决定了选题不宜过大。更稳妥的做法是先把主题拆成一个可执行的小问题，例如“留白”可以拆成“画面里的空白”“对话里的沉默”“时间上的停顿”。选定一个切口后，再匹配合适的形式。提交前至少留出二十分钟做格式检查：文件大小、命名规范、标题是否标注赛道、附件是否完整。每年都有作品因为技术原因未能进入评审，这一点在评论区和新人复盘里反复被提到。</p>
+    <h3>评审更在意什么</h3>
+    <p>综合页面内的作品讨论和编辑短评，评审通常关注三项：主题回应的清晰度、作品完成度、表达上的个人痕迹。完成度不等于精细，而是“该有的部分都在”；个人痕迹也不等于炫技，而是让人看出选择背后的判断。对于第一次参加的人，建议优先保证前两项，把第三项作为加分项，而不是一开始就追求风格化。</p>
+    <blockquote>一位连续参赛者在评论里写道：每日主题大赛在线最像一面镜子，它不会等你准备好，但会逼你在有限时间里做出一个完整的东西。这个“完整”比“惊艳”更值得先拿到。</blockquote>
+    <h3>适合谁，不适合谁</h3>
+    <p>如果你希望用短周期练习保持创作手感，或者想通过高频提交积累作品集，这个页面和相关赛事会比较适合。如果你需要长时间打磨一件大型作品，或者更习惯在充分准备后再公开，那么每日主题大赛在线更适合作为辅助练习，而不是唯一目标。理解这一点，能减少不必要的挫败感，也更容易从每一期里拿到具体的进步。</p>
+    <p>搜索“每日主题大赛在线”的人，通常想确认三件事：入口是否可靠、规则是否清楚、作品是否值得看。这个页面把这三件事拆成可浏览的模块，先给赛程快照，再给作品与解析，最后用问答和评论补足细节。按这个顺序读，基本可以在十分钟内建立对赛事的整体判断。</p>
+  </div>
+</section>
+
+<!-- GUIDE -->
+<section class="container" id="guide">
+  <div class="sec-head">
+    <div>
+      <h2>浏览与参赛<span>体验指南</span></h2>
+      <p>从页面使用到提交习惯，给第一次接触每日主题大赛在线的读者一个清晰的行动顺序。</p>
+    </div>
+  </div>
+  <div class="guide-grid">
+    <div class="guide"><span class="num">01</span><h3>先看今日主题</h3><p>首屏快照和更新列表会标注当期主题与截稿时间，先确认自己是否来得及完成，再决定投入程度。</p></div>
+    <div class="guide"><span class="num">02</span><h3>用分类缩小范围</h3><p>按图文、音频、视频、写作等入口浏览，比在全部作品里翻找更快，也更符合自己的参考需求。</p></div>
+    <div class="guide"><span class="num">03</span><h3>读三件入围作品</h3><p>不要只看最高分作品。选一件高分、一件同形式、一件有争议的作品，更容易看出评审和观众的判断差异。</p></div>
+    <div class="guide"><span class="num">04</span><h3>提前检查提交格式</h3><p>命名、大小、时长和赛道标注是最常见的失分点。建议在截稿前至少留出一次完整检查的时间。</p></div>
+    <div class="guide"><span class="num">05</span><h3>收藏页面按周回看</h3><p>每日主题大赛在线的信息更新频繁，按周回看热门作品和评审观察，比单次浏览更能积累选题感觉。</p></div>
+    <div class="guide"><span class="num">06</span><h3>用评论补足视角</h3><p>评论区常有创作者自述和观众反馈，能帮助理解一件作品为什么有效，或者问题出在哪里。</p></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="container" id="faq">
+  <div class="sec-head">
+    <div>
+      <h2>常见问题<span>与参赛答疑</span></h2>
+      <p>围绕报名、规则、评审和作品浏览整理的高频问题，回答尽量具体，避免空泛。</p>
+    </div>
+  </div>
+  <div class="faq">
+    <details open>
+      <summary>每日主题大赛在线每天都会更新主题吗？</summary>
+      <div class="a">通常按日更新，但具体以当期公告为准。页面中的“今日赛事快照”和更新列表会标注当前主题、期数和截稿时间。遇到系列主题周时，会提前公布连续几天的方向，方便做系列创作。建议关注截稿时间而不是只记主题，避免错过提交窗口。</div>
+    </details>
+    <details>
+      <summary>第一次参加，选哪种形式更容易上手？</summary>
+      <div class="a">如果平时有拍照或写短文的习惯，图文和文字类通常启动成本更低；音频和视频需要额外处理格式与时长，适合已经熟悉剪辑或录音的人。第一次参加不建议同时报多个形式，先把一个作品完整提交，比分散精力更容易获得有效反馈。</div>
+    </details>
+    <details>
+      <summary>评审主要看哪些方面？主题贴合重要吗？</summary>
+      <div class="a">从页面内的作品讨论和编辑短评看，主题贴合、完成度、表达清晰度是主要维度。主题贴合不是重复主题词，而是作品内部有清晰的回应方式。完成度指该有的结构、信息和格式都在；表达清晰度则决定观众能否在短时间内理解你的选择。</div>
+    </details>
+    <details>
+      <summary>往期获奖作品在哪里看，有参考价值吗？</summary>
+      <div class="a">热门作品区和获奖与入围分类会聚合往期作品，附有标签、评分和简短看点。参考价值主要在于观察“同题不同解”：同一主题下，不同形式如何选择切口、如何控制篇幅。建议带着具体问题去看，比如“短文本怎么收尾”“视频怎么用转场”，比泛泛浏览更有效。</div>
+    </details>
+    <details>
+      <summary>提交后还能修改吗？</summary>
+      <div class="a">通常以截稿前的最后一次提交为准，具体规则以当期说明为准。稳妥做法是提前完成并检查，不要在临近截稿时反复覆盖。如果页面提示需要保留源文件，建议按要求保留，以便复核或后续展示使用。</div>
+    </details>
+    <details>
+      <summary>没有专业设备，参加每日主题大赛在线会吃亏吗？</summary>
+      <div class="a">设备不是决定因素。往期不少高讨论度作品来自手机拍摄、纸笔写作或低成本手工。评审更关注选择是否清楚、完成是否完整。与其追求设备升级，不如把时间花在缩小选题、检查格式和删掉多余内容上，这些对结果的影响更直接。</div>
+    </details>
+  </div>
+</section>
+
+<!-- COMMENTS -->
+<section class="container" id="comments">
+  <div class="sec-head">
+    <div>
+      <h2>创作者<span>与观众评论</span></h2>
+      <p>近 30 天内的自然讨论，包含推荐、吐槽、参赛复盘和对评审的不同看法。</p>
+    </div>
+  </div>
+  <div class="comment-grid">
+
+    <div class="comment"><div class="who"><span class="avatar">林</span><b>林小满</b><time>11-07</time></div><p>今天的「留白」主题比想象中难，一开始想拍大场景，后来发现小空间反而更好控制。提交前十分钟改掉了标题，感觉更贴题了。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">陈</span><b>陈半页</b><time>11-07</time></div><p>每日主题大赛在线最实用的其实是更新列表，截稿提醒帮我躲过两次错过时间。建议新手先把格式要求读一遍，真的有人卡在命名上。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">阿</span><b>阿野</b><time>11-06</time></div><p>《地铁末班车的七种声音》听完有点惊喜，声音层次做得很细。不过我个人觉得结尾收得稍快，如果多留两秒空白可能更有余味。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">周</span><b>周拾一</b><time>11-06</time></div><p>连续参加了十二天，最大的变化是选题速度变快了。以前要纠结一小时，现在十分钟内能定下来，剩下的时间都留给制作和检查。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">苏</span><b>苏木木</b><time>11-05</time></div><p>字体海报那件作品评论区吵得挺厉害，但我觉得创意方向没问题，可读性确实可以再调。这种争议反而让人愿意多看几眼。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">何</span><b>何一页</b><time>11-05</time></div><p>新人复盘那篇写得很真实，尤其是“选题过大”这一点。我第一期也是想讲一个完整故事，结果三百字根本装不下，后来才学会收小。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">顾</span><b>顾青野</b><time>11-04</time></div><p>希望视频组能多给一点时长说明，60 秒和常规赛道分开之后，标题标注很容易漏。规则本身不复杂，就是细节多。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">白</span><b>白露</b><time>11-04</time></div><p>我是纯观众，每天来看看热门作品已经成习惯了。这个页面把作品和规则放在一起，比到处翻公告省事，评论区的复盘也好看。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">赵</span><b>赵半山</b><time>11-03</time></div><p>《画在作业本边缘的小人》主题转译得很巧，但我觉得说明文字可以再少一点，让画面自己说话。整体还是本期插画里我最喜欢的一件。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">钱</span><b>钱小舟</b><time>11-03</time></div><p>评审标准那部分写得比较清楚，尤其是“完成度不等于精细”。之前总觉得自己设备不行，后来发现把结构做完整就有机会入围。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">孙</span><b>孙不二</b><time>11-02</time></div><p>吐槽一下，有些作品标签和内容对不上，浏览时有点费劲。不过热门卡片整体质量不错，建议按形式再筛一遍会更顺手。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">李</span><b>李晚风</b><time>11-02</time></div><p>每日主题大赛在线适合当练习场，但不适合赶大作品。我试过连续两天做视频，第二天明显质量下滑，后来改成图文和写作交替，状态好很多。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">吴</span><b>吴声</b><time>11-01</time></div><p>音频组这期整体比上期强，环境声的使用更克制了。希望以后能标注录音设备，方便参考，虽然设备不是决定因素。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">郑</span><b>郑小满</b><time>10-31</time></div><p>第一次提交就入围了，有点意外。回头看，可能是我没有贪多，只回应了主题的一个小点，反而让评审看清楚了。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">冯</span><b>冯一程</b><time>10-30</time></div><p>建议页面加一个按截稿时间排序的入口，现在按热度排有时候会错过还没热起来的作品，不过整体浏览体验已经不错了。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">许</span><b>许青</b><time>10-29</time></div><p>《旧报纸做的城市天际线》让我想起自己堆在角落的材料，低成本也能做出完成度。这种作品比炫技的更让人想动手。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">韩</span><b>韩知远</b><time>10-28</time></div><p>评论区讨论评审标准比作品本身还热闹。我的看法是，先把主题回应清楚，再谈风格。顺序反过来很容易两头不靠。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">沈</span><b>沈迟</b><time>10-27</time></div><p>页面结构挺清楚的，移动端看也不费劲。就是希望热门作品能显示发布时间，有时候分不清是今天的还是昨天的。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">程</span><b>程一</b><time>10-26</time></div><p>每日主题大赛在线的节奏对上班族挺友好，晚上两小时能完成一件小作品。关键是别拖到最后一刻，留出检查时间真的重要。</p></div>
+    <div class="comment"><div class="who"><span class="avatar">唐</span><b>唐小糖</b><time>10-25</time></div><p>喜欢看新人复盘和编辑短评，比单纯看作品多了一层理解。希望以后多出一点同题对比的内容，学习效率会更高。</p></div>
+
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="container" id="news">
+  <div class="sec-head">
+    <div>
+      <h2>赛事<span>相关资讯</span></h2>
+      <p>围绕主题发布、赛制调整、作品观察和获奖名单的资讯汇总。</p>
+    </div>
+  </div>
+  <div class="news-list">
+    <article class="news-item">
+      <time>2026-11-07</time>
+      <div><h3>第 312 期「留白」主题发布，四类赛道同步开放</h3><p>本期鼓励在有限形式里做取舍，图文、音频、视频、手工均可提交。截稿 21:00，评审将在次日公布入围。</p></div>
+    </article>
+    <article class="news-item">
+      <time>2026-11-06</time>
+      <div><h3>「城市观察」系列主题周预告：连续七天命题</h3><p>11 月 8 日至 14 日围绕城市生活展开，适合做系列创作。官方建议提前规划形式，避免连续参赛导致质量下滑。</p></div>
+    </article>
+    <article class="news-item">
+      <time>2026-11-05</time>
+      <div><h3>第 310 期优秀作品合集上线，收录 18 件作品</h3><p>合集包含编辑短评与创作者自述，覆盖写作、摄影、视频和手工四类，适合作为选题与结构参考。</p></div>
+    </article>
+    <article class="news-item">
+      <time>2026-11-04</time>
+      <div><h3>视频组新增 60 秒限时赛道，鼓励紧凑叙事</h3><p>与常规时长并行，提交时需在标题中标注赛道。评审观察指出，短时长更考验开头三秒的信息密度。</p></div>
+    </article>
+    <article class="news-item">
+      <time>2026-11-03</time>
+      <div><h3>新人引导页更新：用三件作品拆解评审维度</h3><p>围绕主题贴合、完成度、表达清晰度给出对照示例，帮助首次参赛者理解评分逻辑，减少无效投入。</p></div>
+    </article>
+    <article class="news-item">
+      <time>2026-11-01</time>
+      <div><h3>十月获奖名单汇总：高频关键词与形式分布</h3><p>图文类占比最高，短文本与音频类增长明显。评审提到，越具体的切口越容易在短周期内做出完成度。</p></div>
+    </article>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand"><span class="mark">赛</span>每日主题大赛在线</div>
+        <p>聚合每日主题赛的参赛入口、赛制说明、作品展示与创作者讨论，帮助读者快速判断是否参加、如何准备、往期作品怎么参考。</p>
+      </div>
+      <div class="foot-col">
+        <h4>快速入口</h4>
+        <a href="/#hero">大赛首页</a>
+        <a href="/#hot">热门作品</a>
+        <a href="/#updates">最新动态</a>
+        <a href="/#cats">分类浏览</a>
+      </div>
+      <div class="foot-col">
+        <h4>参赛参考</h4>
+        <a href="/#deep">评审解析</a>
+        <a href="/#guide">体验指南</a>
+        <a href="/#faq">常见问题</a>
+        <a href="/#news">获奖资讯</a>
+      </div>
+      <div class="foot-col">
+        <h4>友情链接</h4>
+        <a href="/#hero">在线创作社区</a>
+        <a href="/#hot">主题作品库</a>
+        <a href="/#news">赛事公告汇总</a>
+        <a href="/#comments">创作者讨论区</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 每日主题大赛在线 内容专题页 · 本站为信息聚合与阅读演示页面</span>
+      <span>免责声明：页面内赛事数据、作品名称与评论均为内容展示用途，具体规则以官方当期公告为准。</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('mainNav');
+  document.addEventListener('click',function(e){
+    if(nav.classList.contains('open') && !nav.contains(e.target) && !e.target.closest('.menu-toggle')){
+      nav.classList.remove('open');
+    }
+  });
+})();
+</script>
+</body>
+                          </html>
